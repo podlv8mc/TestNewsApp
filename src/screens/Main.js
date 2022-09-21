@@ -4,15 +4,6 @@ import {FlatList, Text, View, TextInput, StyleSheet} from 'react-native';
 import Item from '../components/Item';
 import Modall from '../components/Modal';
 
-/*
-const checkTextInput = () => {
-    if(searchData === ''){
-        console.log('Please Enter a search term');
-        return false;
-    }
-};
-*/
-
 const Main = () => {
   const [data, setData] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
