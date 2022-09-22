@@ -9,16 +9,17 @@ const Main = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalData, setModalData] = useState([]);
   const [searchData, setSearchData] = useState('top-headlines');
+  const [searchDate, setSearchDate] = useState('');
   console.log(data);
 
   useEffect(() => {
     fetch(
-      'https://newsapi.org/v2/everything?q='+searchData+'&apiKey=ba5698a1300042adb9bb988568e440d1',
+      'https://newsapi.org/v2/everything?q='+searchData+searchDate+'&apiKey=ba5698a1300042adb9bb988568e440d1',
     )
       .then(response => response.json())
       .then(json => setData(json))
       .catch(error => console.error(error));
-  }, [searchData]);
+  }, [searchData, searchDate]);
 
   const renderItem = ({item}) => (
     <Item
@@ -45,6 +46,15 @@ const Main = () => {
         placeholderTextColor="#9a73ef"
         autoCapitalize="none"
         onChangeText={text => text ? setSearchData(text) : setSearchData('top-headlines')}
+      />
+
+      <TextInput
+        style={styles.input}
+        underlineColorAndroid="transparent"
+        placeholder="Enter date"
+        placeholderTextColor="#9a73ef"
+        autoCapitalize="none"
+        onChangeText={text => text ? setSearchDate('&from='+text) : setSearchDate('')}
       />
       
       <FlatList
