@@ -14,6 +14,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-news-newsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-news-newsTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		3A303A8BF2E44BD4B79F4A9B /* Nunito-VariableFont_wght_600.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFAC77D8A86A46B58C28E1DA /* Nunito-VariableFont_wght_600.ttf */; };
+		40AF2053369B44CA876DF1D7 /* Nunito-VariableFont_wght_800.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 798D0BB8BDC545E7951F8E9E /* Nunito-VariableFont_wght_800.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = news/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-news-newsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-news-newsTests.release.xcconfig"; path = "Target Support Files/Pods-news-newsTests/Pods-news-newsTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		CFAC77D8A86A46B58C28E1DA /* Nunito-VariableFont_wght_600.ttf */ = {isa = PBXFileReference; name = "Nunito-VariableFont_wght_600.ttf"; path = "../assets/fonts/Nunito-VariableFont_wght_600.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		798D0BB8BDC545E7951F8E9E /* Nunito-VariableFont_wght_800.ttf */ = {isa = PBXFileReference; name = "Nunito-VariableFont_wght_800.ttf"; path = "../assets/fonts/Nunito-VariableFont_wght_800.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				C423293905E246EA8E6414F9 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +152,16 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		C423293905E246EA8E6414F9 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				CFAC77D8A86A46B58C28E1DA /* Nunito-VariableFont_wght_600.ttf */,
+				798D0BB8BDC545E7951F8E9E /* Nunito-VariableFont_wght_800.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +259,8 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				3A303A8BF2E44BD4B79F4A9B /* Nunito-VariableFont_wght_600.ttf in Resources */,
+				40AF2053369B44CA876DF1D7 /* Nunito-VariableFont_wght_800.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
