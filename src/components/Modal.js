@@ -8,6 +8,13 @@ import {
 } from 'react-native';
 import React from 'react';
 
+import moment from 'moment';
+
+/*
+const publishedAt = moment(modalData.publishedAt).format(
+  'MMMM Do YYYY, h:mm:ss a',
+);
+*/
 const Modall = ({modalData, modalVisible, setModalVisible}) => {
   return (
     <Modal
@@ -26,7 +33,9 @@ const Modall = ({modalData, modalVisible, setModalVisible}) => {
           </View>
           <View style={styles.infoBlok}>
             <Text style={styles.defaultTxt}>{modalData.author}</Text>
-            <Text style={styles.defaultTxt}>{modalData.publishedAt}</Text>
+            <Text style={styles.defaultTxt}>
+              {moment(modalData.publishedAt).format('MMMM Do YYYY, h:mm:ss a')}
+            </Text>
           </View>
           <TouchableOpacity
             style={styles.buttonClose}
@@ -92,6 +101,5 @@ const styles = StyleSheet.create({
   },
   defaultTxt: {
     color: 'black',
-  }
-
+  },
 });
