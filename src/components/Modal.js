@@ -22,11 +22,11 @@ const Modall = ({modalData, modalVisible, setModalVisible}) => {
           <View>
             <Text style={styles.title}>{modalData.title}</Text>
             <Image source={{uri: modalData.urlToImage}} style={styles.img} />
-            <Text>{modalData.description}</Text>
+            <Text style={styles.defaultTxt}>{modalData.description}</Text>
           </View>
           <View style={styles.infoBlok}>
-            <Text>{modalData.author}</Text>
-            <Text>{modalData.publishedAt}</Text>
+            <Text style={styles.defaultTxt}>{modalData.author}</Text>
+            <Text style={styles.defaultTxt}>{modalData.publishedAt}</Text>
           </View>
           <TouchableOpacity
             style={styles.buttonClose}
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   title: {
+    color: 'black',
     fontSize: 22,
     fontFamily: 'Times New Roman',
     textAlign: 'center',
@@ -89,4 +90,8 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2,
   },
+  defaultTxt: {
+    color: 'black',
+  }
+
 });
