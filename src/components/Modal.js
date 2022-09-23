@@ -154,6 +154,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 12,
     lineHeight: 20.8,
+    color: 'black',
   },
   title: {
     flex: 1.6,
@@ -161,12 +162,14 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 16,
     lineHeight: 19.2,
+    color: 'black',
   },
   author: {
     fontFamily: 'Times New Roman',
     fontWeight: '800',
     fontSize: 10,
     lineHeight: 13.6,
+    color: 'black',
   },
   description: {
     fontFamily: 'Times New Roman',
@@ -174,6 +177,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center',
     margin: 20,
+    color: 'black',
   },
 });
 

@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginVertical: 10,
     padding: 20,
+    
   },
   infoBlok: {
     flex: 1,
@@ -48,12 +49,14 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 16,
     lineHeight: 19.2,
+    color: 'black',
   },
   description: {
     fontFamily: 'Times New Roman',
     fontWeight: '400',
     fontSize: 14,
     marginTop: 20,
+    color: 'black',
   },
 });
 
