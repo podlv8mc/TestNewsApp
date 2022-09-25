@@ -1,5 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, Text, View, TextInput, StyleSheet} from 'react-native';
+import {
+  FlatList,
+  Text,
+  View,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
+
+import DatePicker from 'react-native-date-picker';
+import moment from 'moment';
 
 import Item from '../components/Item';
 import Modall from '../components/Modal';
@@ -10,11 +20,15 @@ const Main = () => {
   const [modalData, setModalData] = useState([]);
   const [searchData, setSearchData] = useState('top-headlines');
   const [searchDate, setSearchDate] = useState('');
-  console.log(data);
+  const [date, setDate] = useState(new Date());
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     fetch(
-      'https://newsapi.org/v2/everything?q='+searchData+searchDate+'&apiKey=ba5698a1300042adb9bb988568e440d1',
+      'https://newsapi.org/v2/everything?q=' +
+        searchData +
+        searchDate +
+        '&apiKey=ba5698a1300042adb9bb988568e440d1',
     )
       .then(response => response.json())
       .then(json => setData(json))
@@ -32,31 +46,48 @@ const Main = () => {
 
   return (
     <View>
+      <DatePicker
+        modal
+        open={open}
+        date={date}
+        mode="date"
+        onConfirm={date => {
+          setOpen(false);
+          setDate(date);
+          setSearchDate('&from=' + moment(date).format('YYYY-MM-DD'));
+          console.log(searchDate);
+        }}
+        onCancel={() => {
+          setOpen(false);
+        }}
+      />
       <Modall
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
         modalData={modalData}
         setModalData={setModalData}
       />
-      
-      <TextInput
-        style={styles.input}
-        underlineColorAndroid="transparent"
-        placeholder="Enter a search term"
-        placeholderTextColor="#9a73ef"
-        autoCapitalize="none"
-        onChangeText={text => text ? setSearchData(text) : setSearchData('top-headlines')}
-      />
 
-      <TextInput
-        style={styles.input}
-        underlineColorAndroid="transparent"
-        placeholder="Enter date"
-        placeholderTextColor="#9a73ef"
-        autoCapitalize="none"
-        onChangeText={text => text ? setSearchDate('&from='+text) : setSearchDate('')}
-      />
-      
+      <View style={styles.search}>
+        <TextInput
+          style={styles.input}
+          underlineColorAndroid="transparent"
+          placeholderTextColor="#000000"
+          placeholder="Enter a search term"
+          autoCapitalize="none"
+          onChangeText={text =>
+            text ? setSearchData(text) : setSearchData('top-headlines')
+          }
+        />
+        <TouchableOpacity
+          style={styles.datePickerButton}
+          onPress={() => setOpen(true)}>
+          <Text style={{textAlign: 'center', color: '#000000'}}>
+            Select a date
+          </Text>
+        </TouchableOpacity>
+      </View>
+
       <FlatList
         data={data.articles}
         keyExtractor={data.source}
@@ -70,10 +101,38 @@ export default Main;
 
 const styles = StyleSheet.create({
   input: {
-    padding: 10,
-    margin: 15,
+    flex: 6,
+    padding: 20,
     height: 40,
-    borderColor: '#7a42f4',
-    borderWidth: 1,
+    backgroundColor: 'rgba(245, 245, 255, 0.85)',
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+  },
+  search: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    margin: 20,
+  },
+  datePickerButton: {
+    flex: 3,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(245, 245, 255, 0.85)',
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    height: 40,
+    marginLeft: 20,
   },
 });

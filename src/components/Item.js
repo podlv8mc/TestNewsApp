@@ -1,13 +1,6 @@
 import React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 
-/*
-<View style={styles.item}>
-      <Text style={styles.title}>{item.title}</Text>
-      <Text style={styles.description}>{item.description}</Text>
-    </View>
-*/
-
 const Item = ({item, author, setModalVisible, setModalData}) => (
   <TouchableOpacity
     onPress={() => {
@@ -16,18 +9,14 @@ const Item = ({item, author, setModalVisible, setModalData}) => (
     }}>
     <View style={styles.info}>
       <View style={styles.infoBlok}>
-      <Text style={styles.title}>{item.title}</Text>
-      <Text style={styles.description}>{item.description}</Text>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.description}>{item.description}</Text>
       </View>
     </View>
   </TouchableOpacity>
 );
 
 export default Item;
-
-
-
-
 
 const styles = StyleSheet.create({
   info: {
@@ -37,7 +26,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginVertical: 10,
     padding: 20,
-    
   },
   infoBlok: {
     flex: 1,
@@ -59,24 +47,3 @@ const styles = StyleSheet.create({
     color: 'black',
   },
 });
-
-/*
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  title: {
-    color: 'red',
-    fontSize: 32,
-  },
-  description: {
-    fontSize: 18,
-  },
-});
-*/
