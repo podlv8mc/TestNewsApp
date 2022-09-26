@@ -102,7 +102,7 @@ export default Main;
 const styles = StyleSheet.create({
   input: {
     flex: 6,
-    padding: 20,
+    paddingLeft: 20,
     height: 40,
     backgroundColor: 'rgba(245, 245, 255, 0.85)',
     borderRadius: 20,
