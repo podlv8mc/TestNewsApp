@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 
-const Item = ({item, author, setModalVisible, setModalData}) => (
+const Item = ({item, setModalVisible, setModalData}) => (
   <TouchableOpacity
     onPress={() => {
       setModalVisible(true);
