@@ -1,12 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-  FlatList,
-  Text,
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import {FlatList, View, StyleSheet} from 'react-native';
 
 import DatePicker from 'react-native-date-picker';
 import moment from 'moment';
@@ -14,8 +7,10 @@ import Search from '../components/Search';
 
 import Item from '../components/Item';
 import Modall from '../components/Modal';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const Main = () => {
+
   const [data, setData] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalData, setModalData] = useState([]);
@@ -24,18 +19,35 @@ const Main = () => {
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
 
+  const [openSort, setOpenSort] = useState(false);
+  const [sortBy, setSortBy] = useState('popularity');
+  const [items, setItems] = useState([
+    {label: 'relevancy', value: 'relevancy'},
+    {label: 'publishedAt', value: 'publishedAt'},
+    {label: 'popularity', value: 'popularity'},
+  ]);
+
   useEffect(() => {
     fetch(
       'https://newsapi.org/v2/everything?q=' +
         searchData +
         searchDate +
-        '&apiKey=ba5698a1300042adb9bb988568e440d1',
+        '&sortBy=' +
+        sortBy +
+        '&apiKey=e4dfcac1250a41849334a39f744afddd',
     )
       .then(response => response.json())
       .then(json => setData(json))
       .catch(error => console.error(error));
-  }, [searchData, searchDate]);
-
+  }, [searchData, searchDate, sortBy]);
+  console.log(
+    'https://newsapi.org/v2/everything?q=' +
+        searchData +
+        searchDate +
+        '&sortBy=' +
+        sortBy +
+        '&apiKey=e4dfcac1250a41849334a39f744afddd',
+  );
   const renderItem = ({item}) => (
     <Item
       item={item}
@@ -63,15 +75,26 @@ const Main = () => {
         }}
       />
       <Modall
-        modalVisible={modalVisible}
+        modalVisible={modalVisible} 
         setModalVisible={setModalVisible}
         modalData={modalData}
         setModalData={setModalData}
       />
-
+      <View style={styles.sortBy}>
+      <DropDownPicker
+        
+        open={openSort}
+        value={sortBy}
+        items={items}
+        setOpen={setOpenSort}
+        setValue={setSortBy}
+        setItems={setItems}
+      />
+      </View>
       <Search setOpen={setOpen} setSearchData={setSearchData} />
 
       <FlatList
+        style={{zIndex: -1}}
         data={data.articles}
         keyExtractor={data.source}
         renderItem={renderItem}
@@ -82,4 +105,10 @@ const Main = () => {
 
 export default Main;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  sortBy: {
+    width: '90%',
+    alignSelf: 'center',
+    marginBottom: 120,
+  },
+});
